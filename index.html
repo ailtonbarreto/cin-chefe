@@ -246,7 +246,6 @@
       gap: 17px;
     }
 
-    .icon-button,
     .menu-toggle {
       position: relative;
       display: grid;
@@ -259,7 +258,6 @@
       cursor: pointer;
     }
 
-    .icon-button svg,
     .menu-toggle svg {
       width: 30px;
       height: 30px;
@@ -268,21 +266,6 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-width: 1.5;
-    }
-
-    .icon-button svg {
-      width: 30px;
-      height: 30px;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: 5px;
-      right: 1px;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--color-accent);
     }
 
     .menu-toggle {
@@ -404,100 +387,85 @@
       font-size: 10px;
     }
 
-    /* Pratos */
+    /* Serviços */
     .favorites {
       padding-top: var(--section-space);
     }
 
-    .dish-grid {
+    .service-list {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 42px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
     }
 
-    .dish-card {
-      min-width: 0;
-      overflow: hidden;
-      padding: 12px;
-      border: 1px solid var(--color-border);
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--color-border-soft);
       border-radius: var(--radius-card);
       background: var(--color-surface-raised);
-      transition: transform var(--transition), border-color var(--transition);
     }
 
-    .dish-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--color-accent-light);
-    }
-
-    .dish-image {
+    .service-image {
+      position: relative;
       overflow: hidden;
-      aspect-ratio: 1.08;
-      border-radius: 10px;
+      width: 100%;
+      height: 220px;
+      border-radius: 16px;
       background: var(--color-surface);
     }
 
-    .dish-image img {
+    .service-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 400ms ease;
     }
 
-    .dish-card:hover .dish-image img {
-      transform: scale(1.045);
-    }
-
-    .dish-card h3 {
-      margin: 13px 0 4px;
-      color: var(--color-accent-light);
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .dish-card p {
-      min-height: 40px;
-      margin: 0;
-      color: var(--color-muted);
-      font-size: 10px;
-      line-height: 1.6;
-    }
-
-    .dish-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    .dish-price {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .add-dish {
+    .service-bookmark {
+      position: absolute;
+      top: 12px;
+      right: 12px;
       display: grid;
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       place-items: center;
-      border: 1px solid var(--color-border);
       border-radius: 50%;
-      background: transparent;
+      background: rgba(41, 37, 33, .72);
+      color: #fff;
+    }
+
+    .service-bookmark svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.6;
+    }
+
+    .service-copy {
+      min-width: 0;
+      padding-top: 2px;
+    }
+
+    .service-copy h3 {
+      margin: 0 0 4px;
       color: var(--color-text);
-      font-size: 20px;
-      transition: background var(--transition);
-      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
     }
 
-    .add-dish:hover {
-      background: var(--color-accent);
-    }
-
-    .center-action {
-      display: none;
-      justify-content: center;
-      margin-top: 30px;
+    .service-copy p {
+      margin: 0;
+      color: var(--color-text);
+      font-size: 14px;
+      line-height: 1.65;
     }
 
     /* Nossa história */
@@ -856,10 +824,6 @@
         min-height: 390px;
       }
 
-      .dish-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       .story {
         gap: 5%;
       }
@@ -896,10 +860,6 @@
 
       .header-actions {
         gap: 8px;
-      }
-
-      .header-actions .header-actions .icon-button:last-child {
-        display: none;
       }
 
       .nav-list {
@@ -974,31 +934,21 @@
         font-size: 8px;
       }
 
-      .dish-grid {
-        gap: 12px;
-        margin-top: 30px;
+      .service-list {
+        grid-template-columns: 1fr;
       }
 
-      .dish-card {
-        padding: 9px;
-        border-radius: 12px;
+      .service-image {
+        height: 190px;
+        border-radius: 13px;
       }
 
-      .dish-card h3 {
-        font-size: 13px;
+      .service-copy h3 {
+        font-size: 14px;
       }
 
-      .dish-card p {
-        font-size: 9px;
-      }
-
-      .dish-price {
-        font-size: 16px;
-      }
-
-      .add-dish {
-        width: 32px;
-        height: 32px;
+      .service-copy p {
+        font-size: 12px;
       }
 
       .story {
@@ -1051,20 +1001,12 @@
       <nav aria-label="Navegação principal">
         <ul class="nav-list" id="main-navigation">
           <li><a class="active" href="#inicio">Início</a></li>
-          <li><a href="#menu">Menu</a></li>
+          <li><a href="#menu">Serviços</a></li>
           <li><a href="#historia">Nossa história</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
       <div class="header-actions">
-
-        <a class="icon-button" href="#menu" aria-label="Ver pedidos"><span class="cart-count"></span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 8h14l-1 12H6L5 8Z"></path>
-            <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
-          </svg>
-        </a>
-
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
           aria-controls="main-navigation">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1087,11 +1029,11 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Cozinha excepcional</span>
+          <span class="eyebrow">Mais do que preparar Refeições</span>
           <h1>Sabor feito<br>à <span class="accent">perfeição</span></h1>
           <p class="hero-description">Criando experiências gastronômicas excepcionais, uma receita de cada vez.</p>
           <div class="hero-buttons">
-            <a class="button button-primary" href="#menu">Peça agora <span aria-hidden="true">→</span></a>
+            <a class="button button-primary" href="#menu">Conheça os serviços <span aria-hidden="true">→</span></a>
           </div>
 
         </div>
@@ -1108,50 +1050,61 @@
 
     <section class="favorites container" id="menu">
       <div class="section-title">
-        <span class="eyebrow">Favoritos do chef</span>
-        <h2 class="section-heading">Nossa <span class="accent">seleção</span></h2>
-        <p class="section-intro">Favoritos feitos à mão com ingredientes frescos e paixão em cada detalhe.</p>
+        <span class="eyebrow">Serviços</span>
+        <h2 class="section-heading">Nossos <span class="accent">Serviços</span></h2>
+        <p class="section-intro">Conheça nossos serviços personalizados para facilitar sua rotina e valorizar cada refeição.</p>
       </div>
-      <div class="dish-grid">
-        <article class="dish-card">
-          <div class="dish-image"><img
-              src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
-              alt="Filé grelhado servido com legumes da estação" loading="lazy"></div>
-          <h3>Filé Angus grelhado</h3>
-          <p>Filé macio, legumes da estação e molho da casa.</p>
-          <div class="dish-bottom"><span class="dish-price">R$ 0,00</span><button class="add-dish" type="button"
-              aria-label="Adicionar Filé Angus ao pedido">+</button></div>
+      <div class="service-list">
+        <article class="service-card">
+          <div class="service-image">
+            <img
+              src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=400&amp;q=85"
+              alt="Chef preparando refeições em uma cozinha" loading="lazy">
+            <span class="service-bookmark" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-4-6 4V4.75Z"></path>
+              </svg>
+            </span>
+          </div>
+          <div class="service-copy">
+            <h3>Preparação das refeições da semana</h3>
+            <p>Preparamos suas refeições na sua própria casa, organizando o cardápio de acordo com suas preferências e sua rotina. Mais praticidade para a semana, com variedade e sabor em cada refeição.</p>
+          </div>
         </article>
-        <article class="dish-card">
-          <div class="dish-image"><img
-              src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
-              alt="Massa artesanal com ervas frescas e molho cremoso" loading="lazy"></div>
-          <h3>Massa trufada</h3>
-          <p>Massa fresca ao creme de parmesão e trufas.</p>
-          <div class="dish-bottom"><span class="dish-price">R$ 0,00</span><button class="add-dish" type="button"
-              aria-label="Adicionar Massa trufada ao pedido">+</button></div>
+        <article class="service-card">
+          <div class="service-image">
+            <img
+              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=400&amp;q=85"
+              alt="Refeição fresca preparada para um cardápio personalizado" loading="lazy">
+          </div>
+          <div class="service-copy">
+            <h3>Cardápio personalizado</h3>
+            <p>Cada cardápio é pensado individualmente, considerando preferências alimentares, restrições informadas, hábitos e orientações nutricionais compartilhadas pelo cliente.</p>
+          </div>
         </article>
-        <article class="dish-card">
-          <div class="dish-image"><img
-              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
-              alt="Hambúrguer artesanal com queijo, salada e batatas" loading="lazy"></div>
-          <h3>Maison burger</h3>
-          <p>Blend da casa, queijo curado e brioche tostado.</p>
-          <div class="dish-bottom"><span class="dish-price">R$ 0,00</span><button class="add-dish" type="button"
-              aria-label="Adicionar Maison burger ao pedido">+</button></div>
+        <article class="service-card">
+          <div class="service-image">
+            <img
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=400&amp;q=85"
+              alt="Ingredientes frescos selecionados para preparar as refeições" loading="lazy">
+          </div>
+          <div class="service-copy">
+            <h3>Compras dos ingredientes</h3>
+            <p>Para facilitar ainda mais sua rotina, podemos cuidar da compra dos ingredientes necessários para o preparo das refeições, conforme combinado no atendimento.</p>
+          </div>
         </article>
-        <article class="dish-card">
-          <div class="dish-image"><img
-              src="https://tse4.mm.bing.net/th/id/OIP.aw3AxE0ANslzh1AgW-ugZQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-              alt="Prato delicado de frutos do mar com ervas" loading="lazy"></div>
-          <h3>Risoto do mar</h3>
-          <p>Arroz arbóreo, frutos do mar e toque de limão siciliano.</p>
-          <div class="dish-bottom"><span class="dish-price">R$ 0,00</span><button class="add-dish" type="button"
-              aria-label="Adicionar Risoto do mar ao pedido">+</button></div>
+        <article class="service-card">
+          <div class="service-image">
+            <img
+              src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&amp;fit=crop&amp;w=400&amp;q=85"
+              alt="Chef preparando uma refeição em uma cozinha" loading="lazy">
+          </div>
+          <div class="service-copy">
+            <h3>Almoços, jantares e lanches</h3>
+            <p>Além das refeições principais, personalizamos as preparações conforme o que você precisa, buscando oferecer soluções que se encaixem naturalmente na sua rotina.</p>
+          </div>
         </article>
       </div>
-      <div class="center-action"><a class="button" href="#contato">Ver menu completo <span
-            aria-hidden="true">→</span></a></div>
     </section>
 
     <section class="story container" id="historia">
@@ -1227,7 +1180,7 @@
         <h3>Links rápidos</h3>
         <ul class="footer-links">
           <li><a href="#inicio">Início</a></li>
-          <li><a href="#menu">Menu</a></li>
+          <li><a href="#menu">Serviços</a></li>
           <li><a href="#historia">Nossa história</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -1262,25 +1215,6 @@
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Abrir menu");
       }
-    });
-
-    document.querySelectorAll(".add-dish").forEach((button) => {
-      button.addEventListener("click", () => {
-        const cartCount = document.querySelector(".cart-count");
-        const count = Number(cartCount.dataset.count || 0) + 1;
-        cartCount.dataset.count = String(count);
-        cartCount.textContent = count;
-        cartCount.style.width = "16px";
-        cartCount.style.height = "16px";
-        cartCount.style.top = "0";
-        cartCount.style.right = "-4px";
-        cartCount.style.display = "grid";
-        cartCount.style.placeItems = "center";
-        cartCount.style.color = "var(--color-on-accent)";
-        cartCount.style.fontSize = "9px";
-        button.textContent = "✓";
-        window.setTimeout(() => { button.textContent = "+"; }, 900);
-      });
     });
 
     document.querySelector(".newsletter-form").addEventListener("submit", (event) => {
