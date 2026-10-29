@@ -68,7 +68,7 @@
       justify-content: right;
       z-index: 999;
 
-      img{
+      img {
         width: 4rem;
       }
     }
@@ -468,71 +468,287 @@
       line-height: 1.65;
     }
 
-    /* Nossa história */
-    .story {
+    /* Questionário */
+    .questionnaire-promo {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 30px;
+      margin-top: var(--section-space);
+      padding: clamp(26px, 5vw, 54px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      background: var(--color-overlay);
+    }
+
+    .questionnaire-promo h2 {
+      margin: 12px 0;
+    }
+
+    .questionnaire-promo p {
+      max-width: 650px;
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .questionnaire-dialog {
+      width: min(720px, calc(100% - 32px));
+      max-width: none;
+      max-height: min(88vh, 900px);
+      padding: 0;
+      overflow: auto;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      background: var(--color-bg);
+      color: var(--color-text);
+      box-shadow: 0 24px 80px rgba(41, 37, 33, .24);
+    }
+
+    .questionnaire-dialog::backdrop {
+      background: rgba(41, 37, 33, .62);
+      backdrop-filter: blur(3px);
+    }
+
+    .questionnaire-content {
+      padding: clamp(22px, 5vw, 42px);
+    }
+
+    .questionnaire-dialog-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .questionnaire-dialog-header h2,
+    .questionnaire-final h2 {
+      margin: 10px 0;
+      font-size: clamp(27px, 5vw, 38px);
+      line-height: 1.15;
+    }
+
+    .questionnaire-dialog-header p,
+    .questionnaire-final p {
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .questionnaire-close {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid var(--color-border-soft);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--color-text);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .questionnaire-progress {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .questionnaire-progress span {
+      height: 4px;
+      flex: 1;
+      border-radius: 99px;
+      background: var(--color-border-soft);
+    }
+
+    .questionnaire-progress span.is-active {
+      background: var(--color-accent);
+    }
+
+    .questionnaire-step {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .questionnaire-step[hidden],
+    .questionnaire-final[hidden],
+    .conditional-field[hidden] {
+      display: none;
+    }
+
+    .questionnaire-step legend {
+      margin-bottom: 20px;
+      color: var(--color-accent);
+      font-family: var(--font-display);
+      font-size: 24px;
+    }
+
+    .questionnaire-question {
+      margin: 0 0 23px;
+      padding: 0;
+      border: 0;
+    }
+
+    .questionnaire-question legend,
+    .questionnaire-label {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .questionnaire-hint {
+      display: block;
+      margin: -5px 0 10px;
+      color: var(--color-muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .questionnaire-options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .questionnaire-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 13px;
+      border: 1px solid var(--color-border-soft);
+      border-radius: var(--radius-control);
+      background: var(--color-surface);
+      cursor: pointer;
+    }
+
+    .questionnaire-option:has(input:checked) {
+      border-color: var(--color-accent);
+      background: var(--color-overlay);
+    }
+
+    .questionnaire-option input {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+      margin: 3px 0 0;
+      accent-color: var(--color-accent);
+    }
+
+    .questionnaire-text-field {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 13px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-control);
+      background: var(--color-input);
+      color: var(--color-text);
+      font: inherit;
+    }
+
+    textarea.questionnaire-text-field {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .questionnaire-help {
+      margin: 8px 0 0;
+      color: var(--color-muted);
+      font-size: 12px;
+    }
+
+    .questionnaire-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .questionnaire-final {
+      text-align: center;
+    }
+
+    .questionnaire-final .button {
+      margin-top: 24px;
+    }
+
+    /* Quem somos */
+    .about {
       display: grid;
       grid-template-columns: .95fr 1.05fr;
       align-items: center;
       gap: 8%;
+      row-gap: 18px;
       padding-top: var(--section-space);
     }
 
-    .story-copy .eyebrow {
+    .about-copy .eyebrow {
       margin-bottom: 16px;
     }
 
-    .story-copy .section-heading {
+    .about-copy .section-heading {
       font-size: clamp(29px, 3.4vw, 42px);
     }
 
-    .story-copy>p {
-      max-width: 440px;
+    .about-copy>p {
       margin: 18px 0 12px;
       color: var(--color-muted);
       font-size: 13px;
     }
 
-    .signature {
-      margin-top: 16px;
+    .about-founders>h3 {
+      margin: 22px 0 0;
       color: var(--color-accent-light);
-      font-family: var(--font-display);
-      font-size: 23px;
-      font-style: italic;
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .story-stats {
-      display: flex;
-      margin-top: 34px;
+    .about-founder {
+      margin-top: 22px;
     }
 
-    .story-stat {
-      margin: 1vw;
-    }
-
-    .story-stat:last-child {
-      border: 0;
-    }
-
-    .story-stat strong {
-      display: block;
+    .about-founder h4 {
+      margin: 0 0 5px;
       color: var(--color-accent-light);
-      font-size: 20px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .story-stat span {
+    .about-founder p {
+      margin: 0;
       color: var(--color-muted);
-      font-size: 10px;
+      font-size: 13px;
     }
 
-    .story-gallery {
+    .about-mission {
+      grid-column: 1 / -1;
+      padding: 13px 16px;
+      border-left: 2px solid var(--color-accent);
+      background: var(--color-overlay);
+    }
+
+    .about-mission strong {
+      color: var(--color-accent-light);
+      font-size: 12px;
+    }
+
+    .about-mission p {
+      margin: 4px 0 0;
+      color: var(--color-muted);
+      font-size: 13px;
+    }
+
+    .about-gallery {
       display: grid;
-      height: 400px;
-      grid-template-columns: 2fr .0fr;
-      gap: 0;
+      height: 460px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    .story-gallery img {
+    .about-gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -540,16 +756,21 @@
       border-radius: 14px;
     }
 
-    .story-main-image {
+    .about-gallery img:last-child {
+      margin-top: 38px;
+      height: calc(100% - 38px);
+    }
+
+    .about-image {
       overflow: hidden;
       border-radius: 14px;
     }
 
-    .story-main-image img {
+    .about-image img {
       transition: transform 500ms ease;
     }
 
-    .story-main-image:hover img {
+    .about-image:hover img {
       transform: scale(1.035);
     }
 
@@ -824,12 +1045,12 @@
         min-height: 390px;
       }
 
-      .story {
+      .about {
         gap: 5%;
       }
 
-      .story-gallery {
-        height: 340px;
+      .about-gallery {
+        height: 400px;
       }
 
       .footer-grid {
@@ -951,13 +1172,30 @@
         font-size: 12px;
       }
 
-      .story {
+      .about {
         grid-template-columns: 1fr;
         gap: 30px;
       }
 
-      .story-gallery {
-        height: 340px;
+      .about-gallery {
+        height: 300px;
+      }
+
+      .questionnaire-promo {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .questionnaire-promo .button {
+        justify-self: start;
+      }
+
+      .questionnaire-actions {
+        flex-direction: column-reverse;
+      }
+
+      .questionnaire-actions .button {
+        width: 100%;
       }
 
       .reviews-heading {
@@ -1002,7 +1240,8 @@
         <ul class="nav-list" id="main-navigation">
           <li><a class="active" href="#inicio">Início</a></li>
           <li><a href="#menu">Serviços</a></li>
-          <li><a href="#historia">Nossa história</a></li>
+          <li><a href="#historia">Quem somos</a></li>
+          <li><a href="#questionario">Questionário</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -1022,7 +1261,7 @@
     <a href="https://wa.me/5516994632838">
       <img src="logo-whatsapp.png" alt="">
     </a>
-    
+
   </div>
 
   <main>
@@ -1048,11 +1287,14 @@
       </div>
     </section>
 
+
+
     <section class="favorites container" id="menu">
       <div class="section-title">
         <span class="eyebrow">Serviços</span>
         <h2 class="section-heading">Nossos <span class="accent">Serviços</span></h2>
-        <p class="section-intro">Conheça nossos serviços personalizados para facilitar sua rotina e valorizar cada refeição.</p>
+        <p class="section-intro">Conheça nossos serviços personalizados para facilitar sua rotina e valorizar cada
+          refeição.</p>
       </div>
       <div class="service-list">
         <article class="service-card">
@@ -1068,7 +1310,8 @@
           </div>
           <div class="service-copy">
             <h3>Preparação das refeições da semana</h3>
-            <p>Preparamos suas refeições na sua própria casa, organizando o cardápio de acordo com suas preferências e sua rotina. Mais praticidade para a semana, com variedade e sabor em cada refeição.</p>
+            <p>Preparamos suas refeições na sua própria casa, organizando o cardápio de acordo com suas preferências e
+              sua rotina. Mais praticidade para a semana, com variedade e sabor em cada refeição.</p>
           </div>
         </article>
         <article class="service-card">
@@ -1079,7 +1322,8 @@
           </div>
           <div class="service-copy">
             <h3>Cardápio personalizado</h3>
-            <p>Cada cardápio é pensado individualmente, considerando preferências alimentares, restrições informadas, hábitos e orientações nutricionais compartilhadas pelo cliente.</p>
+            <p>Cada cardápio é pensado individualmente, considerando preferências alimentares, restrições informadas,
+              hábitos e orientações nutricionais compartilhadas pelo cliente.</p>
           </div>
         </article>
         <article class="service-card">
@@ -1090,7 +1334,8 @@
           </div>
           <div class="service-copy">
             <h3>Compras dos ingredientes</h3>
-            <p>Para facilitar ainda mais sua rotina, podemos cuidar da compra dos ingredientes necessários para o preparo das refeições, conforme combinado no atendimento.</p>
+            <p>Para facilitar ainda mais sua rotina, podemos cuidar da compra dos ingredientes necessários para o
+              preparo das refeições, conforme combinado no atendimento.</p>
           </div>
         </article>
         <article class="service-card">
@@ -1101,31 +1346,68 @@
           </div>
           <div class="service-copy">
             <h3>Almoços, jantares e lanches</h3>
-            <p>Além das refeições principais, personalizamos as preparações conforme o que você precisa, buscando oferecer soluções que se encaixem naturalmente na sua rotina.</p>
+            <p>Além das refeições principais, personalizamos as preparações conforme o que você precisa, buscando
+              oferecer soluções que se encaixem naturalmente na sua rotina.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="story container" id="historia">
-      <div class="story-copy">
-        <span class="eyebrow">Nossa história</span>
-        <h2 class="section-heading">Paixão em <span class="accent">cada prato</span></h2>
-        <p>Nós da Cin-Chefe, acredita que boa comida aproxima as pessoas. Nossa equipe cria cada prato com dedicação,
-          usando os melhores ingredientes para transformar cada visita em uma lembrança especial.</p>
-        <div class="signature">Serviço de Personal Chef</div>
-        <div class="story-stats">
-          <div class="story-stat"><strong>12+</strong><span>Anos de excelência</span></div>
-          <div class="story-stat"><strong>50+</strong><span>Pratos autorais</span></div>
-          <div class="story-stat"><strong>10 mil+</strong><span>Clientes felizes</span></div>
-        </div>
+    <section class="questionnaire-promo container" id="questionario" aria-labelledby="questionnaire-promo-title">
+      <div>
+        <span class="eyebrow">Atendimento personalizado</span>
+        <h2 class="section-heading" id="questionnaire-promo-title">Uma experiência feita <span class="accent">para
+            você.</span></h2>
+        <p>Conte um pouco sobre sua rotina, suas preferências e o que espera do serviço. Vamos preparar uma conversa
+          mais direcionada para você.</p>
       </div>
-      <div class="story-gallery">
-        <div class="story-main-image"><img
-            src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
-            alt="Chef finalizando com cuidado um prato na cozinha" loading="lazy"></div>
+      <button class="button button-primary" type="button" data-open-questionnaire>Responder questionário <span
+          aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="about container" id="historia" aria-labelledby="about-title">
+      <div class="about-copy">
+        <span class="eyebrow">Quem somos</span>
+        <h2 class="section-heading" id="about-title">Uma história feita em <span class="accent">família</span></h2>
+        <p>A Cin-Chefe nasceu do sonho familiar de transformar mais de 15 anos de experiência gastronômica em uma
+          solução prática, personalizada e cheia de sabor para o seu dia a dia. Unimos a vivência de uma cozinha
+          profissional à gestão atenciosa para levar refeições sob medida até a sua casa.</p>
+
+        <div class="about-founders">
+          <h3>Nossos Fundadores</h3>
+          <article class="about-founder">
+            <h4>Vaumerinda Borges Cintra | Cofundadora e Chef</h4>
+            <p>Com mais de 15 anos de atuação em renomados restaurantes e buffets de Franca-SP, alia técnica
+              profissional e aperfeiçoamento constante ao carinho da culinária caseira. Na Cin-Chefe, lidera o preparo
+              das refeições e a criação de cardápios exclusivos, respeitando o gosto, as restrições alimentares e a
+              rotina de cada família.</p>
+          </article>
+          <article class="about-founder">
+            <h4>Maikon Cintra | Cofundador e Gestor</h4>
+            <p>Formado em Matemática e professor de profissão, uniu a precisão lógica ao desejo de empreender em
+              família. É responsável pela gestão administrativa, pelo apoio na cozinha e, principalmente, pelo
+              atendimento ao cliente — garantindo uma comunicação próxima, organização eficiente e total alinhamento
+              com as expectativas do público.</p>
+          </article>
+        </div>
+
+      </div>
+      <div class="about-gallery" aria-label="Culinária e preparo das refeições da Cin-Chefe">
+        <div class="about-image"><img
+            src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
+            alt="Chef preparando uma refeição em uma cozinha profissional" loading="lazy"></div>
+        <div class="about-image"><img
+            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
+            alt="Preparo cuidadoso de uma refeição na cozinha" loading="lazy"></div>
+      </div>
+      <div class="about-mission">
+        <strong>Nossa Missão</strong>
+        <p>Proporcionar praticidade, qualidade de vida e tranquilidade para o seu dia a dia, com a dedicação e o
+          cuidado de quem cozinha para a própria família.</p>
       </div>
     </section>
+
+
 
     <section class="testimonials container" id="avaliacoes">
       <div class="reviews-heading">
@@ -1167,9 +1449,252 @@
           <div class="review-author"><strong>Mika S.</strong><span>Viajante</span></div>
         </article>
       </div>
-
     </section>
   </main>
+
+  <dialog class="questionnaire-dialog" id="questionnaire-dialog" aria-labelledby="questionnaire-title">
+    <div class="questionnaire-content">
+      <div class="questionnaire-dialog-header">
+        <div>
+          <span class="eyebrow">Cin-Chefe</span>
+          <h2 id="questionnaire-title">Uma experiência feita para você.</h2>
+          <p>Na Cin-Chefe, acreditamos que uma boa alimentação deve combinar sabor, variedade, qualidade e praticidade.
+            Por isso, nosso serviço de chef particular é pensado de acordo com as preferências, a rotina e as
+            necessidades de cada cliente.</p>
+          <p>Responda às perguntas a seguir para nos contar um pouco sobre você. Com base nas suas respostas, poderemos
+            iniciar uma conversa mais direcionada e entender como personalizar nosso serviço para você.</p>
+        </div>
+        <button class="questionnaire-close" type="button" aria-label="Fechar questionário"
+          data-close-questionnaire>×</button>
+      </div>
+
+      <div class="questionnaire-progress" aria-label="Progresso do questionário">
+        <span class="is-active"></span><span></span><span></span><span></span>
+      </div>
+
+      <form id="questionnaire-form" novalidate>
+        <fieldset class="questionnaire-step" data-step="0">
+          <legend tabindex="-1">Etapa 1 — Vamos conhecer você</legend>
+          <fieldset class="questionnaire-question">
+            <legend>1. Para quantas pessoas vamos preparar as refeições?</legend>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="radio" name="people" value="Apenas para mim" required>
+                <span>Apenas para mim</span></label>
+              <label class="questionnaire-option"><input type="radio" name="people" value="Para duas pessoas">
+                <span>Para duas pessoas</span></label>
+              <label class="questionnaire-option"><input type="radio" name="people" value="Para 3 a 4 pessoas">
+                <span>Para 3 a 4 pessoas</span></label>
+              <label class="questionnaire-option"><input type="radio" name="people" value="Para 5 pessoas ou mais">
+                <span>Para 5 pessoas ou mais</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="questionnaire-question">
+            <legend>2. Com que frequência você gostaria de contratar a Cin-Chefe?</legend>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="radio" name="frequency" value="Uma experiência pontual"
+                  required><span>Uma experiência pontual</span></label>
+              <label class="questionnaire-option"><input type="radio" name="frequency" value="Toda semana"><span>Toda
+                  semana</span></label>
+              <label class="questionnaire-option"><input type="radio" name="frequency"
+                  value="A cada quinze dias"><span>A
+                  cada quinze dias</span></label>
+              <label class="questionnaire-option"><input type="radio" name="frequency" value="Uma vez por mês"><span>Uma
+                  vez por mês</span></label>
+              <label class="questionnaire-option"><input type="radio" name="frequency"
+                  value="Ainda não sei, quero conhecer as opções"><span>Ainda não sei, quero conhecer as
+                  opções</span></label>
+            </div>
+          </fieldset>
+          <div class="questionnaire-actions">
+            <span></span>
+            <button class="button button-primary" type="button" data-next>Continuar <span
+                aria-hidden="true">→</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset class="questionnaire-step" data-step="1" hidden>
+          <legend tabindex="-1">Etapa 2 — Sua rotina alimentar</legend>
+          <fieldset class="questionnaire-question">
+            <legend>3. Quais refeições você gostaria que preparássemos?</legend>
+            <span class="questionnaire-hint">Selecione todas as opções desejadas.</span>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="checkbox" name="meals"
+                  value="Almoço"><span>Almoço</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="meals"
+                  value="Jantar"><span>Jantar</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="meals"
+                  value="Lanches"><span>Lanches</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="questionnaire-question">
+            <legend>4. Qual é o seu principal objetivo ao contratar um chef particular?</legend>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="radio" name="goal"
+                  value="Ganhar tempo e praticidade no dia a dia" required><span>Ganhar tempo e praticidade no dia a
+                  dia</span></label>
+              <label class="questionnaire-option"><input type="radio" name="goal"
+                  value="Comer melhor e variar o cardápio"><span>Comer melhor e variar o cardápio</span></label>
+              <label class="questionnaire-option"><input type="radio" name="goal"
+                  value="Seguir uma dieta ou orientação alimentar"><span>Seguir uma dieta ou orientação
+                  alimentar</span></label>
+              <label class="questionnaire-option"><input type="radio" name="goal"
+                  value="Ter refeições personalizadas para a família"><span>Ter refeições personalizadas para a
+                  família</span></label>
+              <label class="questionnaire-option"><input type="radio" name="goal"
+                  value="Ter uma experiência gastronômica diferenciada"><span>Ter uma experiência gastronômica
+                  diferenciada</span></label>
+              <label class="questionnaire-option"><input type="radio" name="goal" value="Outro motivo"><span>Outro
+                  motivo</span></label>
+            </div>
+            <div class="conditional-field" data-show-when="goal:Outro motivo" hidden>
+              <label class="questionnaire-label" for="goal-details">Conte brevemente qual é o seu objetivo.
+                (Opcional)</label>
+              <textarea class="questionnaire-text-field" id="goal-details" name="goalDetails"></textarea>
+            </div>
+          </fieldset>
+          <fieldset class="questionnaire-question">
+            <legend>5. Como você prefere suas refeições?</legend>
+            <span class="questionnaire-hint">Selecione todas as opções que combinam com você.</span>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="checkbox" name="mealStyle"
+                  value="Comida caseira do dia a dia"><span>Comida caseira do dia a dia</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="mealStyle"
+                  value="Refeições leves e equilibradas"><span>Refeições leves e equilibradas</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="mealStyle"
+                  value="Alta variedade ao longo da semana"><span>Alta variedade ao longo da semana</span></label>
+            </div>
+          </fieldset>
+          <div class="questionnaire-actions">
+            <button class="button" type="button" data-previous>← Voltar</button>
+            <button class="button button-primary" type="button" data-next>Continuar <span
+                aria-hidden="true">→</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset class="questionnaire-step" data-step="2" hidden>
+          <legend tabindex="-1">Etapa 3 — Suas preferências</legend>
+          <fieldset class="questionnaire-question">
+            <legend>6. Você possui alguma restrição alimentar ou segue alguma orientação específica?</legend>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="radio" name="restrictions" value="Não possuo restrições"
+                  required><span>Não possuo restrições</span></label>
+              <label class="questionnaire-option"><input type="radio" name="restrictions"
+                  value="Alimentação vegetariana ou vegana"><span>Alimentação vegetariana ou vegana</span></label>
+              <label class="questionnaire-option"><input type="radio" name="restrictions"
+                  value="Intolerâncias ou alergias alimentares"><span>Intolerâncias ou alergias
+                  alimentares</span></label>
+              <label class="questionnaire-option"><input type="radio" name="restrictions"
+                  value="Sigo uma dieta ou orientação nutricional"><span>Sigo uma dieta ou orientação
+                  nutricional</span></label>
+              <label class="questionnaire-option"><input type="radio" name="restrictions"
+                  value="Tenho outras restrições ou preferências"><span>Tenho outras restrições ou
+                  preferências</span></label>
+            </div>
+            <div class="conditional-field" data-show-when="restrictions:Não possuo restrições" data-invert hidden>
+              <label class="questionnaire-label" for="restriction-details">Pode nos contar um pouco mais sobre suas
+                restrições ou orientações alimentares? (Opcional)</label>
+              <textarea class="questionnaire-text-field" id="restriction-details" name="restrictionDetails"></textarea>
+              <p class="questionnaire-help">Essas informações nos ajudarão a compreender suas necessidades. Os detalhes
+                serão confirmados antes de definirmos o atendimento.</p>
+            </div>
+          </fieldset>
+          <fieldset class="questionnaire-question">
+            <legend>7. Quais ingredientes ou alimentos você prefere evitar?</legend>
+            <span class="questionnaire-hint">Selecione todas as opções que se aplicam.</span>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="checkbox" name="avoid"
+                  value="Nenhum em especial"><span>Nenhum em especial</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="avoid"
+                  value="Carnes específicas"><span>Carnes específicas</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="avoid"
+                  value="Verduras e legumes específicos"><span>Verduras e legumes específicos</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="avoid"
+                  value="Lactose, glúten ou outros ingredientes"><span>Lactose, glúten ou outros
+                  ingredientes</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="avoid"
+                  value="Outros alimentos"><span>Outros alimentos</span></label>
+              <label class="questionnaire-option"><input type="checkbox" name="avoid"
+                  value="Prefiro explicar no WhatsApp"><span>Prefiro explicar no WhatsApp</span></label>
+            </div>
+            <div class="conditional-field" data-show-when="avoid-details" hidden>
+              <label class="questionnaire-label" for="avoid-details">Se quiser, especifique quais alimentos ou
+                ingredientes prefere evitar. (Opcional)</label>
+              <textarea class="questionnaire-text-field" id="avoid-details" name="avoidDetails"></textarea>
+            </div>
+          </fieldset>
+          <div class="questionnaire-actions">
+            <button class="button" type="button" data-previous>← Voltar</button>
+            <button class="button button-primary" type="button" data-next>Continuar <span
+                aria-hidden="true">→</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset class="questionnaire-step" data-step="3" hidden>
+          <legend tabindex="-1">Etapa 4 — Como podemos facilitar sua vida?</legend>
+          <fieldset class="questionnaire-question">
+            <legend>8. Como você prefere organizar as compras dos ingredientes?</legend>
+            <div class="questionnaire-options">
+              <label class="questionnaire-option"><input type="radio" name="shopping"
+                  value="Quero que a Cin-Chefe cuide das compras" required><span>Quero que a Cin-Chefe cuide das
+                  compras</span></label>
+              <label class="questionnaire-option"><input type="radio" name="shopping"
+                  value="Prefiro comprar os ingredientes por conta própria"><span>Prefiro comprar os ingredientes por
+                  conta própria</span></label>
+              <label class="questionnaire-option"><input type="radio" name="shopping"
+                  value="Quero conhecer as duas possibilidades"><span>Quero conhecer as duas
+                  possibilidades</span></label>
+            </div>
+            <div class="conditional-field" data-show-when="shopping:Quero que a Cin-Chefe cuide das compras" hidden>
+              <fieldset class="questionnaire-question">
+                <legend>Como gostaria de combinar as compras? (Opcional)</legend>
+                <div class="questionnaire-options">
+                  <label class="questionnaire-option"><input type="radio" name="shoppingDetails"
+                      value="Seguir uma lista de compras combinada previamente"><span>Seguir uma lista de compras
+                      combinada previamente</span></label>
+                  <label class="questionnaire-option"><input type="radio" name="shoppingDetails"
+                      value="Deixar a escolha dos ingredientes com a Cin-Chefe, respeitando minhas preferências"><span>Deixar
+                      a escolha dos ingredientes com a Cin-Chefe, respeitando minhas preferências</span></label>
+                  <label class="questionnaire-option"><input type="radio" name="shoppingDetails"
+                      value="Prefiro combinar isso na conversa"><span>Prefiro combinar isso na conversa</span></label>
+                </div>
+              </fieldset>
+            </div>
+          </fieldset>
+          <div class="questionnaire-question">
+            <label class="questionnaire-label" for="customer-name">Como podemos chamar você? (Opcional)</label>
+            <input class="questionnaire-text-field" id="customer-name" name="customerName" type="text"
+              autocomplete="name" placeholder="Seu nome">
+          </div>
+          <div class="questionnaire-question">
+            <label class="questionnaire-label" for="additional-info">Quer acrescentar alguma informação?</label>
+            <textarea class="questionnaire-text-field" id="additional-info" name="additionalInfo"></textarea>
+            <p class="questionnaire-help">Conte algo sobre sua rotina, suas preferências ou o que espera do serviço.
+              Qualquer detalhe adicional pode nos ajudar a personalizar sua experiência.</p>
+          </div>
+          <div class="questionnaire-actions">
+            <button class="button" type="button" data-previous>← Voltar</button>
+            <button class="button button-primary" type="button" data-finish>Ver minhas preferências <span
+                aria-hidden="true">→</span></button>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="questionnaire-final" data-questionnaire-final hidden aria-live="polite">
+        <span class="eyebrow">Vamos conversar?</span>
+        <h2 tabindex="-1">Suas preferências, nossa próxima conversa.</h2>
+        <p>Obrigado por compartilhar um pouco sobre você com a Cin-Chefe!</p>
+        <p>Suas respostas nos ajudarão a compreender melhor o que você procura e a iniciar uma conversa mais
+          personalizada. Agora, você pode encaminhar suas informações pelo WhatsApp para conversarmos sobre as
+          possibilidades do serviço e os valores.</p>
+        <a class="button button-primary" data-whatsapp-questionnaire href="https://wa.me/5516994632838" target="_blank"
+          rel="noopener noreferrer">Conversar com a Cin-Chefe pelo WhatsApp</a>
+        <div class="questionnaire-actions">
+          <button class="button" type="button" data-previous>← Revisar respostas</button>
+          <button class="button" type="button" data-close-questionnaire>Fechar</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
 
   <footer class="site-footer" id="contato">
     <div class="container footer-grid">
@@ -1181,7 +1706,7 @@
         <ul class="footer-links">
           <li><a href="#inicio">Início</a></li>
           <li><a href="#menu">Serviços</a></li>
-          <li><a href="#historia">Nossa história</a></li>
+          <li><a href="#historia">Quem somos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </div>
@@ -1217,12 +1742,187 @@
       }
     });
 
-    document.querySelector(".newsletter-form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      const email = document.querySelector("#newsletter-email");
-      document.querySelector(".form-message").textContent = `Obrigado! Enviaremos novidades para ${email.value}.`;
-      event.currentTarget.reset();
+    const questionnaireDialog = document.querySelector("#questionnaire-dialog");
+    const questionnaireForm = document.querySelector("#questionnaire-form");
+    const questionnaireSteps = [...questionnaireForm.querySelectorAll("[data-step]")];
+    const questionnaireProgress = [...document.querySelectorAll(".questionnaire-progress span")];
+    const questionnaireFinal = document.querySelector("[data-questionnaire-final]");
+    let currentQuestionnaireStep = 0;
+
+    function showQuestionnaireStep(step) {
+      currentQuestionnaireStep = step;
+      questionnaireSteps.forEach((element, index) => {
+        element.hidden = index !== step;
+      });
+      questionnaireProgress.forEach((element, index) => {
+        element.classList.toggle("is-active", index <= step);
+      });
+      questionnaireFinal.hidden = true;
+      if (questionnaireDialog.open) {
+        questionnaireSteps[step].querySelector("legend").focus();
+      }
+    }
+
+    function validateQuestionnaireStep(step) {
+      const invalidControl = step.querySelector(":invalid");
+      if (invalidControl) {
+        invalidControl.reportValidity();
+        return false;
+      }
+      return true;
+    }
+
+    function getRadioLabel(name) {
+      const selected = questionnaireForm.querySelector(`input[name="${name}"]:checked`);
+      return selected ? selected.value : "";
+    }
+
+    function getCheckedValues(name) {
+      return [...questionnaireForm.querySelectorAll(`input[name="${name}"]:checked`)].map((input) => input.value);
+    }
+
+    function getOptionalValue(name) {
+      return questionnaireForm.elements[name].value.trim();
+    }
+
+    function updateConditionalFields() {
+      questionnaireForm.querySelectorAll("[data-show-when]").forEach((field) => {
+        const condition = field.dataset.showWhen;
+        let shouldShow;
+        if (condition === "avoid-details") {
+          shouldShow = getCheckedValues("avoid").some((value) =>
+            ["Carnes específicas", "Verduras e legumes específicos", "Lactose, glúten ou outros ingredientes", "Outros alimentos"].includes(value)
+          );
+        } else {
+          const [name, value] = condition.split(":");
+          shouldShow = getRadioLabel(name) === value;
+          if (field.hasAttribute("data-invert")) {
+            shouldShow = Boolean(getRadioLabel(name)) && !shouldShow;
+          }
+        }
+        field.hidden = !shouldShow;
+        if (!shouldShow) {
+          field.querySelectorAll("textarea, input").forEach((input) => {
+            if (input.type === "radio" || input.type === "checkbox") {
+              input.checked = false;
+            } else {
+              input.value = "";
+            }
+          });
+        }
+      });
+    }
+
+    questionnaireForm.addEventListener("change", (event) => {
+      if (event.target.name === "avoid") {
+        const avoidOptions = [...questionnaireForm.querySelectorAll('input[name="avoid"]')];
+        const noneOption = avoidOptions.find((input) => input.value === "Nenhum em especial");
+        if (event.target === noneOption && noneOption.checked) {
+          avoidOptions.filter((input) => input !== noneOption).forEach((input) => {
+            input.checked = false;
+          });
+        } else if (event.target.checked) {
+          noneOption.checked = false;
+        }
+      }
+      updateConditionalFields();
     });
+
+    document.querySelector("[data-open-questionnaire]").addEventListener("click", () => {
+      questionnaireDialog.showModal();
+      showQuestionnaireStep(0);
+    });
+
+    questionnaireDialog.querySelectorAll("[data-close-questionnaire]").forEach((button) => {
+      button.addEventListener("click", () => questionnaireDialog.close());
+    });
+
+    questionnaireDialog.addEventListener("close", () => {
+      questionnaireForm.reset();
+      updateConditionalFields();
+      showQuestionnaireStep(0);
+      questionnaireProgress.forEach((element, index) => {
+        element.classList.toggle("is-active", index === 0);
+      });
+    });
+
+    questionnaireDialog.querySelectorAll("[data-next]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const step = questionnaireSteps[currentQuestionnaireStep];
+        if (!validateQuestionnaireStep(step)) {
+          return;
+        }
+        showQuestionnaireStep(currentQuestionnaireStep + 1);
+      });
+    });
+
+    questionnaireDialog.querySelectorAll("[data-previous]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (questionnaireFinal.hidden) {
+          showQuestionnaireStep(Math.max(0, currentQuestionnaireStep - 1));
+        } else {
+          questionnaireFinal.hidden = true;
+          questionnaireSteps[currentQuestionnaireStep].hidden = false;
+          questionnaireProgress.forEach((element) => element.classList.add("is-active"));
+        }
+      });
+    });
+
+    document.querySelector("[data-finish]").addEventListener("click", () => {
+      const step = questionnaireSteps[currentQuestionnaireStep];
+      if (!validateQuestionnaireStep(step)) {
+        return;
+      }
+
+      const answerLines = [
+        "*Questionário de atendimento — Cin-Chefe*",
+        "",
+        `*Pessoas:* ${getRadioLabel("people")}`,
+        `*Frequência:* ${getRadioLabel("frequency")}`,
+        `*Refeições:* ${getCheckedValues("meals").join(", ") || "Não informado"}`,
+        `*Objetivo:* ${getRadioLabel("goal")}`,
+      ];
+      const goalDetails = getOptionalValue("goalDetails");
+      if (goalDetails) answerLines.push(`*Outro objetivo:* ${goalDetails}`);
+      answerLines.push(
+        `*Preferências de refeições:* ${getCheckedValues("mealStyle").join(", ") || "Não informado"}`,
+        `*Restrições/orientações:* ${getRadioLabel("restrictions")}`,
+      );
+      const restrictionDetails = getOptionalValue("restrictionDetails");
+      if (restrictionDetails) answerLines.push(`*Detalhes das restrições:* ${restrictionDetails}`);
+      answerLines.push(
+        `*Alimentos a evitar:* ${getCheckedValues("avoid").join(", ") || "Não informado"}`,
+      );
+      const avoidDetails = getOptionalValue("avoidDetails");
+      if (avoidDetails) answerLines.push(`*Detalhes dos alimentos a evitar:* ${avoidDetails}`);
+      answerLines.push(
+        `*Compras:* ${getRadioLabel("shopping")}`,
+      );
+      const shoppingDetails = getRadioLabel("shoppingDetails");
+      if (shoppingDetails) answerLines.push(`*Como combinar as compras:* ${shoppingDetails}`);
+      const customerName = getOptionalValue("customerName");
+      if (customerName) answerLines.push(`*Nome:* ${customerName}`);
+      const additionalInfo = getOptionalValue("additionalInfo");
+      if (additionalInfo) answerLines.push(`*Informações adicionais:* ${additionalInfo}`);
+      answerLines.push("", "Gostaria de conversar sobre as possibilidades do serviço e os valores.");
+
+      const whatsappLink = document.querySelector("[data-whatsapp-questionnaire]");
+      whatsappLink.href = `https://wa.me/5516994632838?text=${encodeURIComponent(answerLines.join("\n"))}`;
+      questionnaireSteps[currentQuestionnaireStep].hidden = true;
+      questionnaireFinal.hidden = false;
+      questionnaireProgress.forEach((element) => element.classList.add("is-active"));
+      questionnaireFinal.querySelector("h2").focus();
+    });
+
+    const newsletterForm = document.querySelector(".newsletter-form");
+    if (newsletterForm) {
+      newsletterForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email = document.querySelector("#newsletter-email");
+        document.querySelector(".form-message").textContent = `Obrigado! Enviaremos novidades para ${email.value}.`;
+        event.currentTarget.reset();
+      });
+    }
   </script>
 </body>
 
