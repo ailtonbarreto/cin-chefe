@@ -1674,7 +1674,7 @@
           </div>
           <div class="questionnaire-actions">
             <button class="button" type="button" data-previous>← Voltar</button>
-            <button class="button button-primary" type="button" data-finish>Ver minhas preferências <span
+            <button class="button button-primary" type="button" data-finish>Finalizar <span
                 aria-hidden="true">→</span></button>
           </div>
         </fieldset>
@@ -1688,7 +1688,7 @@
           personalizada. Agora, você pode encaminhar suas informações pelo WhatsApp para conversarmos sobre as
           possibilidades do serviço e os valores.</p>
         <a class="button button-primary" data-whatsapp-questionnaire href="https://wa.me/5516991275338" target="_blank"
-          rel="noopener noreferrer">Conversar com a Cin-Chefe pelo WhatsApp</a>
+          rel="noopener noreferrer">Enviar Formulário</a>
         <div class="questionnaire-actions">
           <button class="button" type="button" data-previous>← Revisar respostas</button>
           <button class="button" type="button" data-close-questionnaire>Fechar</button>
@@ -1765,12 +1765,25 @@
     }
 
     function validateQuestionnaireStep(step) {
+      updateCheckboxGroupValidity();
       const invalidControl = step.querySelector(":invalid");
       if (invalidControl) {
         invalidControl.reportValidity();
         return false;
       }
       return true;
+    }
+
+    function updateCheckboxGroupValidity() {
+      [
+        ["meals", "Selecione pelo menos uma refeição."],
+        ["mealStyle", "Selecione pelo menos uma preferência de alimentação."],
+        ["avoid", "Selecione pelo menos uma opção ou 'Nenhum em especial'."],
+      ].forEach(([name, message]) => {
+        const checkboxes = [...questionnaireForm.querySelectorAll(`input[name="${name}"]`)];
+        const hasSelection = checkboxes.some((checkbox) => checkbox.checked);
+        checkboxes[0].setCustomValidity(hasSelection ? "" : message);
+      });
     }
 
     function getRadioLabel(name) {
@@ -1827,6 +1840,7 @@
         }
       }
       updateConditionalFields();
+      updateCheckboxGroupValidity();
     });
 
     document.querySelector("[data-open-questionnaire]").addEventListener("click", () => {
@@ -1841,6 +1855,7 @@
     questionnaireDialog.addEventListener("close", () => {
       questionnaireForm.reset();
       updateConditionalFields();
+      updateCheckboxGroupValidity();
       showQuestionnaireStep(0);
       questionnaireProgress.forEach((element, index) => {
         element.classList.toggle("is-active", index === 0);
@@ -1875,37 +1890,61 @@
         return;
       }
 
-      const answerLines = [
-        "*Questionário de atendimento — Cin-Chefe*",
-        "",
-        `*Pessoas:* ${getRadioLabel("people")}`,
-        `*Frequência:* ${getRadioLabel("frequency")}`,
-        `*Refeições:* ${getCheckedValues("meals").join(", ") || "Não informado"}`,
-        `*Objetivo:* ${getRadioLabel("goal")}`,
-      ];
-      const goalDetails = getOptionalValue("goalDetails");
-      if (goalDetails) answerLines.push(`*Outro objetivo:* ${goalDetails}`);
-      answerLines.push(
-        `*Preferências de refeições:* ${getCheckedValues("mealStyle").join(", ") || "Não informado"}`,
-        `*Restrições/orientações:* ${getRadioLabel("restrictions")}`,
-      );
-      const restrictionDetails = getOptionalValue("restrictionDetails");
-      if (restrictionDetails) answerLines.push(`*Detalhes das restrições:* ${restrictionDetails}`);
-      answerLines.push(
-        `*Alimentos a evitar:* ${getCheckedValues("avoid").join(", ") || "Não informado"}`,
-      );
-      const avoidDetails = getOptionalValue("avoidDetails");
-      if (avoidDetails) answerLines.push(`*Detalhes dos alimentos a evitar:* ${avoidDetails}`);
-      answerLines.push(
-        `*Compras:* ${getRadioLabel("shopping")}`,
-      );
-      const shoppingDetails = getRadioLabel("shoppingDetails");
-      if (shoppingDetails) answerLines.push(`*Como combinar as compras:* ${shoppingDetails}`);
       const customerName = getOptionalValue("customerName");
-      if (customerName) answerLines.push(`*Nome:* ${customerName}`);
+      const goalDetails = getOptionalValue("goalDetails");
+      const restrictionDetails = getOptionalValue("restrictionDetails");
+      const avoidDetails = getOptionalValue("avoidDetails");
+      const shoppingDetails = getRadioLabel("shoppingDetails");
       const additionalInfo = getOptionalValue("additionalInfo");
-      if (additionalInfo) answerLines.push(`*Informações adicionais:* ${additionalInfo}`);
-      answerLines.push("", "Gostaria de conversar sobre as possibilidades do serviço e os valores.");
+      const answerLines = [
+        "Olá, pessoal da Cin-Chefe! Tudo bem?",
+        "",
+        "Preenchi o questionário no site e gostaria de conhecer melhor o serviço e receber uma proposta personalizada.",
+        "",
+        "SOBRE MIM",
+        `- Nome: ${customerName || "Não informado"}`,
+        `- Número de pessoas: ${getRadioLabel("people")}`,
+        `- Frequência desejada: ${getRadioLabel("frequency")}`,
+        "",
+        "MINHAS REFEIÇÕES",
+        `- Refeições desejadas: ${getCheckedValues("meals").join(", ") || "Não informado"}`,
+        `- Meu principal objetivo: ${getRadioLabel("goal")}`,
+      ];
+      if (goalDetails) {
+        answerLines.push(`- Detalhes do objetivo: ${goalDetails}`);
+      }
+      answerLines.push(
+        `- Preferências de alimentação: ${getCheckedValues("mealStyle").join(", ") || "Não informado"}`,
+        "",
+        "PREFERÊNCIAS ALIMENTARES",
+        `- Restrições ou orientações: ${getRadioLabel("restrictions")}`,
+      );
+      if (restrictionDetails) {
+        answerLines.push(`- Detalhes das restrições: ${restrictionDetails}`);
+      }
+      answerLines.push(
+        `- Alimentos que prefiro evitar: ${getCheckedValues("avoid").join(", ") || "Não informado"}`,
+      );
+      if (avoidDetails) {
+        answerLines.push(`- Detalhes dos alimentos: ${avoidDetails}`);
+      }
+      answerLines.push(
+        "",
+        "ORGANIZAÇÃO DAS COMPRAS",
+        `- Minha preferência: ${getRadioLabel("shopping")}`,
+      );
+      if (shoppingDetails) {
+        answerLines.push(`- Como prefiro organizar as compras: ${shoppingDetails}`);
+      }
+      if (additionalInfo) {
+        answerLines.push("", "INFORMAÇÕES ADICIONAIS", additionalInfo);
+      }
+      answerLines.push(
+        "",
+        "Gostaria de conversar para entender as possibilidades e os valores, e descobrir como a Cin-Chefe pode se adaptar à minha rotina.",
+        "",
+        "Obrigado(a)! Aguardo o retorno.",
+      );
 
       const whatsappLink = document.querySelector("[data-whatsapp-questionnaire]");
       whatsappLink.href = `https://wa.me/5516991275338?text=${encodeURIComponent(answerLines.join("\n"))}`;
