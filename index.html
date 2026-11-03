@@ -276,51 +276,59 @@
     /* Hero */
     .hero {
       position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
       overflow: hidden;
     }
 
     .hero::before {
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 54%;
-      height: 100%;
-      background: radial-gradient(ellipse at 52% 44%, var(--color-overlay), transparent 62%);
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .68), rgba(0, 0, 0, .24));
       content: "";
       pointer-events: none;
     }
 
     .hero-grid {
-      position: relative;
-      display: grid;
-      min-height: 580px;
-      grid-template-columns: .9fr 1.1fr;
+      display: flex;
+      min-height: 100vh;
+      min-height: 100svh;
       align-items: center;
-      gap: 20px;
       padding-block: 58px 24px;
     }
 
     .hero-copy {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      max-width: 640px;
       padding-bottom: 14px;
     }
 
     .hero h1 {
       max-width: 570px;
       margin: 18px 0 19px;
+      color: #fff;
       font-size: clamp(48px, 6vw, 76px);
       font-weight: 500;
       letter-spacing: -.065em;
       line-height: .99;
     }
 
+    .hero .accent {
+      color: #f2bb85;
+    }
+
+    .hero .eyebrow {
+      color: #fff;
+    }
+
     .hero-description {
       max-width: 390px;
       margin: 0;
       padding-top: 16px;
-      border-top: 1px solid var(--color-border);
-      color: var(--color-muted);
+      border-top: 1px solid rgba(255, 255, 255, .55);
+      color: rgba(255, 255, 255, .9);
       font-size: 14px;
     }
 
@@ -332,20 +340,15 @@
     }
 
     .hero-visual {
-      position: relative;
-      display: grid;
-      min-height: 470px;
-      place-items: center;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
 
     .hero-plate {
-      width: min(100%, 530px);
-      aspect-ratio: 1;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
-      border: 1px solid var(--color-border-soft);
-      border-radius: 50%;
-      background: var(--color-surface);
-      box-shadow: 0 0 0 10px rgba(41, 37, 33, .035), 0 0 70px var(--color-overlay);
     }
 
     .hero-plate img {
@@ -1034,16 +1037,12 @@
       }
 
       .hero-grid {
-        min-height: 500px;
-        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        min-height: 100svh;
       }
 
       .hero h1 {
         font-size: clamp(46px, 7vw, 64px);
-      }
-
-      .hero-visual {
-        min-height: 390px;
       }
 
       .about {
@@ -1114,9 +1113,7 @@
       }
 
       .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-        padding-block: 52px 20px;
+        padding-block: 90px 30px;
       }
 
       .hero-copy {
@@ -1130,16 +1127,6 @@
 
       .hero-description {
         max-width: 420px;
-      }
-
-      .hero-visual {
-        min-height: 0;
-        margin: 28px auto 0;
-        width: min(100%, 440px);
-      }
-
-      .hero-plate {
-        width: 86%;
       }
 
       .feature {
@@ -1220,8 +1207,8 @@
       }
 
       .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 34px 24px;
+        grid-template-columns: 1fr;
+        gap: 28px;
         padding-block: 42px 32px;
       }
 
@@ -1280,7 +1267,7 @@
         <div class="hero-visual">
           <div class="hero-plate">
             <img
-              src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=1100&amp;q=88"
+              src="./assets/home.jpg"
               alt="Prato autoral colorido com vegetais frescos e ingredientes selecionados">
           </div>
 
@@ -1302,6 +1289,7 @@
           <div class="service-image">
             <img
               src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=400&amp;q=85"
+              
               alt="Chef preparando refeições em uma cozinha" loading="lazy">
             <span class="service-bookmark" aria-hidden="true">
               <svg viewBox="0 0 24 24">
@@ -1699,7 +1687,7 @@
 
   <footer class="site-footer" id="contato">
     <div class="container footer-grid">
-      <div>
+      <div class="footer-column">
         <a class="brand footer-brand" href="#inicio"><img src="./logo.png"></a>
       </div>
       <div class="footer-column">
