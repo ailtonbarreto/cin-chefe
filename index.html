@@ -418,7 +418,7 @@
       position: relative;
       overflow: hidden;
       width: 100%;
-      height: 220px;
+      height: 280px;
       border-radius: 16px;
       background: var(--color-surface);
     }
@@ -727,42 +727,20 @@
       font-size: 13px;
     }
 
-    .about-mission {
-      grid-column: 1 / -1;
-      padding: 13px 16px;
-      border-left: 2px solid var(--color-accent);
-      background: var(--color-overlay);
-    }
-
-    .about-mission strong {
-      color: var(--color-accent-light);
-      font-size: 12px;
-    }
-
-    .about-mission p {
-      margin: 4px 0 0;
-      color: var(--color-muted);
-      font-size: 13px;
-    }
 
     .about-gallery {
       display: grid;
-      height: 460px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      height: 620px;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .about-gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center -48px;
       border: 1px solid var(--color-border);
       border-radius: 14px;
-    }
-
-    .about-gallery img:last-child {
-      margin-top: 38px;
-      height: calc(100% - 38px);
     }
 
     .about-image {
@@ -853,8 +831,8 @@
     }
 
     .review-person img {
-      width: 42px;
-      height: 42px;
+      width: 100px;
+      height: 100px;
       border: 1px solid var(--color-border);
       border-radius: 50%;
       object-fit: cover;
@@ -1050,7 +1028,7 @@
       }
 
       .about-gallery {
-        height: 400px;
+        height: 540px;
       }
 
       .footer-grid {
@@ -1116,6 +1094,10 @@
         padding-block: 90px 30px;
       }
 
+      .hero-plate img {
+        object-position: 85% center;
+      }
+
       .hero-copy {
         padding-bottom: 0;
       }
@@ -1148,7 +1130,7 @@
       }
 
       .service-image {
-        height: 190px;
+        height: 240px;
         border-radius: 13px;
       }
 
@@ -1166,7 +1148,7 @@
       }
 
       .about-gallery {
-        height: 300px;
+        height: 460px;
       }
 
       .questionnaire-promo {
@@ -1257,8 +1239,8 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">Mais do que preparar Refeições</span>
-          <h1>Sabor feito<br>à <span class="accent">perfeição</span></h1>
-          <p class="hero-description">Criando experiências gastronômicas excepcionais, uma receita de cada vez.</p>
+          <h1>Seu Chefe<br>Na <span class="accent">Sua Casa</span></h1>
+          <p class="hero-description">Facilitando sua rotina através de uma experiência gastronômica.</p>
           <div class="hero-buttons">
             <a class="button button-primary" href="#menu">Conheça os serviços <span aria-hidden="true">→</span></a>
           </div>
@@ -1266,9 +1248,7 @@
         </div>
         <div class="hero-visual">
           <div class="hero-plate">
-            <img
-              src="./assets/home.jpg"
-              alt="Prato autoral colorido com vegetais frescos e ingredientes selecionados">
+            <img src="./assets/home.png" alt="Prato autoral colorido com vegetais frescos e ingredientes selecionados">
           </div>
 
         </div>
@@ -1288,14 +1268,8 @@
         <article class="service-card">
           <div class="service-image">
             <img
-              src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=400&amp;q=85"
-              
+              src="./assets/service1.jpg"
               alt="Chef preparando refeições em uma cozinha" loading="lazy">
-            <span class="service-bookmark" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-4-6 4V4.75Z"></path>
-              </svg>
-            </span>
           </div>
           <div class="service-copy">
             <h3>Preparação das refeições da semana</h3>
@@ -1382,18 +1356,12 @@
 
       </div>
       <div class="about-gallery" aria-label="Culinária e preparo das refeições da Cin-Chefe">
-        <div class="about-image"><img
-            src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
-            alt="Chef preparando uma refeição em uma cozinha profissional" loading="lazy"></div>
-        <div class="about-image"><img
-            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&amp;fit=crop&amp;w=700&amp;q=85"
-            alt="Preparo cuidadoso de uma refeição na cozinha" loading="lazy"></div>
-      </div>
-      <div class="about-mission">
-        <strong>Nossa Missão</strong>
-        <p>Proporcionar praticidade, qualidade de vida e tranquilidade para o seu dia a dia, com a dedicação e o
-          cuidado de quem cozinha para a própria família.</p>
-      </div>
+
+        <div class="about-image"><img src="./assets/about1.png"
+            alt="Chef preparando uma refeição em uma cozinha profissional" loading="lazy">
+        </div>
+
+
     </section>
 
 
@@ -1410,12 +1378,12 @@
         <article class="review-card">
           <div class="review-top">
             <div class="review-person"><img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=100&amp;h=100&amp;q=80"
+                src="./assets/cliente1.png"
                 alt=""><span class="review-stars" aria-label="5 estrelas">★★★★★</span></div><span class="quote-mark"
               aria-hidden="true">”</span>
           </div>
-          <p>A comida estava excepcional, o ambiente é elegante e cada detalhe superou nossas expectativas.</p>
-          <div class="review-author"><strong>Fernanda M.</strong><span>Food blogger</span></div>
+          <p>Recomento o serviço da Cin-Chefe. Excelente para quem preza por qualidade e sabor.</p>
+          <div class="review-author"><strong>César Pegorari</strong></div>
         </article>
         <article class="review-card">
           <div class="review-top">
@@ -1425,7 +1393,7 @@
               aria-hidden="true">”</span>
           </div>
           <p>Uma das melhores experiências gastronômicas que já tivemos. Apresentação linda e sabores incríveis.</p>
-          <div class="review-author"><strong>Christian P.</strong><span>Empreendedor</span></div>
+          <div class="review-author"><strong>Christian P.</strong></div>
         </article>
         <article class="review-card">
           <div class="review-top">
@@ -1435,7 +1403,7 @@
               aria-hidden="true">”</span>
           </div>
           <p>Um dos melhores jantares da cidade. Serviço atencioso, pratos lindos e saborosos.</p>
-          <div class="review-author"><strong>Mika S.</strong><span>Viajante</span></div>
+          <div class="review-author"><strong>Mika S.</strong></div>
         </article>
       </div>
     </section>
